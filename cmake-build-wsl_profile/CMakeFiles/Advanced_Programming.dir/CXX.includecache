@@ -1,0 +1,100 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/AnomalyDetector.h
+string
+-
+vector
+-
+timeseries.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/timeseries.h
+cmath
+-
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/CLI.cpp
+CLI.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/CLI.h
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/CLI.h
+string.h
+-
+commands.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/commands.h
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/HybridAnomalyDetector.h
+SimpleAnomalyDetector.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/SimpleAnomalyDetector.h
+minCircle.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/minCircle.h
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/MainTrain.cpp
+iostream
+-
+fstream
+-
+commands.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/commands.h
+CLI.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/CLI.h
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/SimpleAnomalyDetector.h
+anomaly_detection_util.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/anomaly_detection_util.h
+AnomalyDetector.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/AnomalyDetector.h
+vector
+-
+algorithm
+-
+cstring
+-
+cmath
+-
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/anomaly_detection_util.h
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/commands.cpp
+commands.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/commands.h
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/commands.h
+iostream
+-
+string.h
+-
+fstream
+-
+vector
+-
+HybridAnomalyDetector.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/HybridAnomalyDetector.h
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/minCircle.h
+iostream
+-
+vector
+-
+cmath
+-
+stdlib.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/stdlib.h
+anomaly_detection_util.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/anomaly_detection_util.h
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/timeseries.h
+map
+-
+vector
+-
+sstream
+-
+fstream
+-
+iostream
+-
+
