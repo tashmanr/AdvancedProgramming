@@ -13,6 +13,7 @@
 #include <vector>
 #include "HybridAnomalyDetector.h"
 #include <sys/socket.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -71,37 +72,34 @@ class SocketIO : public DefaultIO {
 public:
     SocketIO(int clientID): clientID(clientID){}
     virtual string read(){
-        char buffer[bufferSize];
-        bzero(buffer, bufferSize);
-        recv(clientID,buffer,bufferSize,0);
-        //Todo: need to check about input that is longer than buffersize
-        return string(buffer);
+        string input;
+        char c = 0;
+        recv(clientID,&c,sizeof(char),0);
+        while (c!= ' ' && c!= '\n') {
+            input+=c;
+            recv(clientID,&c,sizeof(char),0);
+        }
+        return input;
     }
+
     virtual void write(string t){
         const char * buffer = t.c_str();
         send(clientID, buffer, strlen(buffer),0);
     }
 
     virtual void write(float f){
-        char buffer[bufferSize];
-        sprintf(buffer, "%.*e", f);
-        send(clientID, buffer, strlen(buffer),0);
+        string s = to_string(f);
+        write(s);
     }
 
     virtual void read(float* f){
         char buffer[bufferSize];
         bzero(buffer, bufferSize);
         recv(clientID,buffer,bufferSize,0);
-        //Todo: need to check about input that is longer than buffersize
-        in>>*f;
+        *f = stof(buffer);
     }
 
-    void close(){
-        //need to close the cli and whatever else we create
-    }
-    ~SocketIO(){
-        close();
-    }
+    ~SocketIO(){}
 };
 
 //This class is the data that will be passed through the execute parameter
@@ -176,6 +174,7 @@ public:
 
     void execute(Info *data) override {
         dio->write("The current correlation threshold is ");
+        cout << "Good job! Made it to command 2!" << endl;
         dio->write(data->detector->getThreshold());
         dio->write("\n");
         dio->write("Type a new threshold\n");

@@ -5,36 +5,46 @@
  */
 #include "Server.h"
 
-Server::Server(int port)throw (const char*) {
-    fd = socket(AF_INET,SOCK_STREAM,0);
+Server::Server(int port) throw(const char *) {
+    stopFlag = false;
+    //making a new TCP socket
+    fd = socket(AF_INET, SOCK_STREAM, 0);
     if (fd < 0)
-        throw "socket failed";
+        throw "Socket failed";
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY; //local address
-    server.sin_port = htons(port);//function to switch host to network (for endianess)
-    if(bind(fd,(struct sockaddr*) &server, sizeof(server)) < 0) {
-        throw "bind failure";
+    server.sin_port = htons(port);//function to switch host to network
+    if (bind(fd, (struct sockaddr *) &server, sizeof(server)) < 0) {
+        throw "Bind failed";
     }
-    if(listen(fd, 3) < 0) {//3 is number of clients waiting in queue
-        throw "listen failure";
+    if (listen(fd, clientLimit) < 0) {
+        throw "Listen failed";
     }
 }
 
-void Server::start(ClientHandler& ch)throw(const char*){
-    t = new thread([&ch,this]() {
-        socklen_t clientSize = sizeof(client);
-        int aClient = accept(fd, (struct sockaddr*) &client, &clientSize);
-        if(aClient < 0) {
-            throw "accept failure";
+void Server::start(ClientHandler &ch) throw(const char *) {
+    alarm(1);
+    t = new thread([&ch, this]() {
+        //socklen_t clientSize = sizeof(client);
+        while (!stopFlag) {
+            socklen_t clientSize = sizeof(client);
+            alarm(1);
+            clientSocket = accept(fd, (struct sockaddr *) &client, &clientSize);
+            alarm(1);
+            if (clientSocket < 0) {
+                throw "Accept failed";
+            }
+            ch.handle(clientSocket);
+            close(clientSocket);
         }
-        ch.handle(aClient);
-        close(aClient);
         close(fd);
     });
 }
 
-void Server::stop(){
-	t->join(); // do not delete this!
+void Server::stop() {
+    stopFlag = true;
+    t->join(); // do not delete this!
+    delete t; //freeing the memory
 }
 
 Server::~Server() {
