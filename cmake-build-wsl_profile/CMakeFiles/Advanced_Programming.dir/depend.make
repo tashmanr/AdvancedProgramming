@@ -23,11 +23,23 @@ CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o: ../AnomalyDetector.h
 CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o: ../CLI.h
 CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o: ../HybridAnomalyDetector.h
 CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o: ../MainTrain.cpp
+CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o: ../Server.h
 CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o: ../SimpleAnomalyDetector.h
 CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o: ../anomaly_detection_util.h
 CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o: ../commands.h
 CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o: ../minCircle.h
 CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o: ../timeseries.h
+
+CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../AnomalyDetector.h
+CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../CLI.h
+CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../HybridAnomalyDetector.h
+CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../Server.cpp
+CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../Server.h
+CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../SimpleAnomalyDetector.h
+CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../anomaly_detection_util.h
+CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../commands.h
+CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../minCircle.h
+CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../timeseries.h
 
 CMakeFiles/Advanced_Programming.dir/SimpleAnomalyDetector.cpp.o: ../AnomalyDetector.h
 CMakeFiles/Advanced_Programming.dir/SimpleAnomalyDetector.cpp.o: ../SimpleAnomalyDetector.cpp

@@ -14,6 +14,7 @@
 #include "HybridAnomalyDetector.h"
 #include <sys/socket.h>
 #include <unistd.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -30,38 +31,41 @@ public:
     virtual ~DefaultIO() {}
 };
 
-class StandardIO:public DefaultIO{
+class StandardIO : public DefaultIO {
     ifstream in;
     ofstream out;
 public:
-    StandardIO(string inputFile,string outputFile){
+    StandardIO(string inputFile, string outputFile) {
         in.open(inputFile);
         out.open(outputFile);
     }
-    virtual string read(){
+
+    virtual string read() {
         string s;
-        in>>s;
+        in >> s;
         return s;
     }
-    virtual void write(string text){
-        out<<text;
+
+    virtual void write(string text) {
+        out << text;
     }
 
-    virtual void write(float f){
-        out<<f;
+    virtual void write(float f) {
+        out << f;
     }
 
-    virtual void read(float* f){
-        in>>*f;
+    virtual void read(float *f) {
+        in >> *f;
     }
 
-    void close(){
-        if(in.is_open())
+    void close() {
+        if (in.is_open())
             in.close();
-        if(out.is_open())
+        if (out.is_open())
             out.close();
     }
-    ~StandardIO(){
+
+    ~StandardIO() {
         close();
     }
 };
@@ -70,36 +74,37 @@ class SocketIO : public DefaultIO {
     int clientID;
     int bufferSize = 1024;
 public:
-    SocketIO(int clientID): clientID(clientID){}
-    virtual string read(){
+    SocketIO(int clientID) : clientID(clientID) {}
+
+    virtual string read() {
         string input;
         char c = 0;
-        recv(clientID,&c,sizeof(char),0);
-        while (c!= ' ' && c!= '\n') {
-            input+=c;
-            recv(clientID,&c,sizeof(char),0);
+        recv(clientID, &c, sizeof(char), 0);
+        while (c != ' ' && c != '\n') {
+            input += c;
+            recv(clientID, &c, sizeof(char), 0);
         }
         return input;
     }
 
-    virtual void write(string t){
-        const char * buffer = t.c_str();
-        send(clientID, buffer, strlen(buffer),0);
+    virtual void write(string t) {
+        const char *buffer = t.c_str();
+        send(clientID, buffer, strlen(buffer), 0);
     }
 
-    virtual void write(float f){
+    virtual void write(float f) {
         string s = to_string(f);
         write(s);
     }
 
-    virtual void read(float* f){
+    virtual void read(float *f) {
         char buffer[bufferSize];
         bzero(buffer, bufferSize);
-        recv(clientID,buffer,bufferSize,0);
+        recv(clientID, buffer, bufferSize, 0);
         *f = stof(buffer);
     }
 
-    ~SocketIO(){}
+    ~SocketIO() {}
 };
 
 //This class is the data that will be passed through the execute parameter
@@ -254,6 +259,25 @@ public:
         data->anomalyWindows.push_back(reports);
     }
 
+    string Trim3FloatToString(float f) {
+        if (f == 0) {
+            return "0";
+        } else {
+            stringstream ss;
+            ss << std::fixed << setprecision(3) << f;
+            string s = ss.str();
+            if (s[s.length() - 1] != '0') {
+                return s;
+            } else if (s[s.length() - 2] != '0') {
+                string s2 = to_string(s[0]) + to_string(s[1]) + to_string(s[2]) + to_string(s[3]);
+                return s2;
+            } else {
+                string s2 = to_string(s[0]) + to_string(s[1]) + to_string(s[2]);
+                return s2;
+            }
+        }
+    }
+
     //function to analyze the anomaly data
     void analyze(Info *data) {
         float FP = 0;
@@ -267,7 +291,7 @@ public:
                 if ((a.start <= data->anomalyWindows[0][i] && a.end >= data->anomalyWindows[0][i])
                     || (a.start <= data->anomalyWindows[1][i] && a.end >= data->anomalyWindows[1][i])
                     || (a.start >= data->anomalyWindows[0][i] && a.end <= data->anomalyWindows[1][i])) {
-                    if (data->anomalyWindows[2][i] == 0){
+                    if (data->anomalyWindows[2][i] == 0) {
                         TP++;
                     }
                     data->anomalyWindows[2][i]++;
@@ -291,11 +315,11 @@ public:
         float positiveT, positiveF;
         positiveT = TP / numWindows;
         positiveF = FP / N;
-        dio->write("True Positive Rate: ");
-        dio->write(floorf(positiveT * 1000.0) / 1000.0);//round to 3 points after decimal
-        dio->write("\nFalse Positive Rate: ");
-        dio->write(floorf(positiveF * 1000.0) / 1000.0);//round to 3 points after decimal
-        dio->write("\n");
+        dio->write("True Positive Rate: " + Trim3FloatToString(positiveT) + "\n");
+        //dio->write(floorf(positiveT * 1000.0) / 1000.0);//round to 3 points after decimal
+        dio->write("False Positive Rate: " + Trim3FloatToString(positiveF) + "\n");
+        //dio->write(floorf(positiveF * 1000.0) / 1000.0);//round to 3 points after decimal
+        //dio->write("\n");
     }
 
     void execute(Info *data) override {

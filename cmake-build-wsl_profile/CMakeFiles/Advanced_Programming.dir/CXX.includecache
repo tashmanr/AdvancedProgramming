@@ -37,16 +37,58 @@ iostream
 -
 fstream
 -
+sys/types.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+netdb.h
+-
+pthread.h
+-
+thread
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+time.h
+-
+Server.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/Server.h
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/Server.cpp
+Server.h
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/Server.h
+
+/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/Server.h
+iostream
+-
+sys/socket.h
+-
+netinet/in.h
+-
+pthread.h
+-
+thread
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
 commands.h
 /mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/commands.h
 CLI.h
 /mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/CLI.h
-
-/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/SimpleAnomalyDetector.cpp
-SimpleAnomalyDetector.h
-/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/SimpleAnomalyDetector.h
-minCircle.h
-/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/minCircle.h
 
 /mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/SimpleAnomalyDetector.h
 anomaly_detection_util.h
@@ -79,6 +121,12 @@ vector
 -
 HybridAnomalyDetector.h
 /mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/HybridAnomalyDetector.h
+sys/socket.h
+-
+unistd.h
+-
+iomanip
+-
 
 /mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/minCircle.h
 iostream
