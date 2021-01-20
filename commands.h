@@ -12,6 +12,7 @@
 #include <fstream>
 #include <vector>
 #include "HybridAnomalyDetector.h"
+#include <sys/socket.h>
 
 using namespace std;
 
@@ -27,12 +28,12 @@ public:
 
     virtual ~DefaultIO() {}
 };
-/*
-class SocketIO : public DefaultIO {
+
+class StandardIO:public DefaultIO{
     ifstream in;
     ofstream out;
 public:
-    SocketIO(int domain, int type, int protocol){
+    StandardIO(string inputFile,string outputFile){
         in.open(inputFile);
         out.open(outputFile);
     }
@@ -59,10 +60,49 @@ public:
         if(out.is_open())
             out.close();
     }
+    ~StandardIO(){
+        close();
+    }
+};
+
+class SocketIO : public DefaultIO {
+    int clientID;
+    int bufferSize = 1024;
+public:
+    SocketIO(int clientID): clientID(clientID){}
+    virtual string read(){
+        char buffer[bufferSize];
+        bzero(buffer, bufferSize);
+        recv(clientID,buffer,bufferSize,0);
+        //Todo: need to check about input that is longer than buffersize
+        return string(buffer);
+    }
+    virtual void write(string t){
+        const char * buffer = t.c_str();
+        send(clientID, buffer, strlen(buffer),0);
+    }
+
+    virtual void write(float f){
+        char buffer[bufferSize];
+        sprintf(buffer, "%.*e", f);
+        send(clientID, buffer, strlen(buffer),0);
+    }
+
+    virtual void read(float* f){
+        char buffer[bufferSize];
+        bzero(buffer, bufferSize);
+        recv(clientID,buffer,bufferSize,0);
+        //Todo: need to check about input that is longer than buffersize
+        in>>*f;
+    }
+
+    void close(){
+        //need to close the cli and whatever else we create
+    }
     ~SocketIO(){
         close();
     }
-};*/
+};
 
 //This class is the data that will be passed through the execute parameter
 class Info {
@@ -228,8 +268,11 @@ public:
                 if ((a.start <= data->anomalyWindows[0][i] && a.end >= data->anomalyWindows[0][i])
                     || (a.start <= data->anomalyWindows[1][i] && a.end >= data->anomalyWindows[1][i])
                     || (a.start >= data->anomalyWindows[0][i] && a.end <= data->anomalyWindows[1][i])) {
+                    if (data->anomalyWindows[2][i] == 0){
+                        TP++;
+                    }
                     data->anomalyWindows[2][i]++;
-                    TP++;
+                    //TP++;
                     flag = true;
                     break;
                 }
@@ -250,9 +293,9 @@ public:
         positiveT = TP / numWindows;
         positiveF = FP / N;
         dio->write("True Positive Rate: ");
-        dio->write(round(positiveT * 1000.0) / 1000.0);//round to 3 points after decimal
+        dio->write(floorf(positiveT * 1000.0) / 1000.0);//round to 3 points after decimal
         dio->write("\nFalse Positive Rate: ");
-        dio->write(round(positiveF * 1000.0) / 1000.0);//round to 3 points after decimal
+        dio->write(floorf(positiveF * 1000.0) / 1000.0);//round to 3 points after decimal
         dio->write("\n");
     }
 
