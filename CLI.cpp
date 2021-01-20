@@ -7,7 +7,7 @@
 //constructor for CLI
 CLI::CLI(DefaultIO* dio) {
     this->dio = dio;
-    this->data = new cliData();
+    this->data = new Info();
     //initializing the order of the options
     commands.push_back(new Upload(dio));
     commands.push_back(new Settings(dio));

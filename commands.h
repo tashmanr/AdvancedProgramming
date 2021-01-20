@@ -26,12 +26,46 @@ public:
     virtual void read(float *f) = 0;
 
     virtual ~DefaultIO() {}
-
-    // you may add additional methods here
 };
+/*
+class SocketIO : public DefaultIO {
+    ifstream in;
+    ofstream out;
+public:
+    SocketIO(int domain, int type, int protocol){
+        in.open(inputFile);
+        out.open(outputFile);
+    }
+    virtual string read(){
+        string s;
+        in>>s;
+        return s;
+    }
+    virtual void write(string text){
+        out<<text;
+    }
 
-//This class is the data that will be passed through the execute parameter from the CLI
-class cliData {
+    virtual void write(float f){
+        out<<f;
+    }
+
+    virtual void read(float* f){
+        in>>*f;
+    }
+
+    void close(){
+        if(in.is_open())
+            in.close();
+        if(out.is_open())
+            out.close();
+    }
+    ~SocketIO(){
+        close();
+    }
+};*/
+
+//This class is the data that will be passed through the execute parameter
+class Info {
 public:
     HybridAnomalyDetector *detector;
     vector<AnomalyReport> *ar;
@@ -39,7 +73,7 @@ public:
     TimeSeries *test;
     vector<vector<float>> anomalyWindows;
 
-    cliData() {
+    Info() {
         detector = new HybridAnomalyDetector();
         ar = new vector<AnomalyReport>();
         train = new TimeSeries();
@@ -47,7 +81,7 @@ public:
         anomalyWindows = vector<vector<float>>();
     }
 
-    virtual ~cliData() {};
+    virtual ~Info() {};
 };
 
 class Command {
@@ -57,7 +91,7 @@ public:
 
     Command(DefaultIO *dio, string string1) : dio(dio), description(string1) {}
 
-    virtual void execute(cliData *data) = 0;
+    virtual void execute(Info *data) = 0;
 
     virtual ~Command() {}
 };
@@ -67,7 +101,7 @@ class Upload : public Command {
 public:
     Upload(DefaultIO *dio) : Command(dio, "1.upload a time series csv file\n") {}
 
-    void execute(cliData *data) override {
+    void execute(Info *data) override {
         dio->write("Please upload your local train CSV file.\n");
         const char *trainFile = "train.csv";
         const char *testFile = "test.csv";
@@ -100,7 +134,7 @@ class Settings : public Command {
 public:
     Settings(DefaultIO *dio) : Command(dio, "2.algorithm settings\n") {}
 
-    void execute(cliData *data) override {
+    void execute(Info *data) override {
         dio->write("The current correlation threshold is ");
         dio->write(data->detector->getThreshold());
         dio->write("\n");
@@ -120,7 +154,7 @@ class DetectAnomalies : public Command {
 public:
     DetectAnomalies(DefaultIO *dio) : Command(dio, "3.detect anomalies\n") {}
 
-    void execute(cliData *data) override {
+    void execute(Info *data) override {
         data->detector->learnNormal(*(data->train));
         *data->ar = (data->detector->detect(*data->test));
         dio->write("anomaly detection complete.\n");
@@ -132,7 +166,7 @@ class DisplayResults : public Command {
 public:
     DisplayResults(DefaultIO *dio) : Command(dio, "4.display results\n") {}
 
-    void execute(cliData *data) override {
+    void execute(Info *data) override {
         for (const AnomalyReport &a  : *data->ar) {
             dio->write(to_string(a.timeStep) + "\t" + a.description + "\n");
         }
@@ -146,7 +180,7 @@ public:
     UploadAndAnalyze(DefaultIO *dio) : Command(dio, "5.upload anomalies and analyze results\n") {}
 
     //function to read the file
-    void readFile(cliData *data) {
+    void readFile(Info *data) {
         vector<float> start;
         vector<float> end;
         vector<float> reports;
@@ -182,7 +216,7 @@ public:
     }
 
     //function to analyze the anomaly data
-    void analyze(cliData *data) {
+    void analyze(Info *data) {
         float FP = 0;
         float TP = 0;
         float numWindows = data->anomalyWindows.begin()->size();
@@ -222,7 +256,7 @@ public:
         dio->write("\n");
     }
 
-    void execute(cliData *data) override {
+    void execute(Info *data) override {
         readFile(data);
         analyze(data);
     }
@@ -233,7 +267,7 @@ class Exit : public Command {
 public:
     Exit(DefaultIO *dio) : Command(dio, "6.exit\n") {}
 
-    void execute(cliData *data) override {
+    void execute(Info *data) override {
         return;
     }
 };

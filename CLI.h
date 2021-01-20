@@ -17,7 +17,7 @@ class CLI {
     vector<Command *> commands;
     // you can add data members
 public:
-    cliData* data;
+    Info* data;
 	CLI(DefaultIO* dio);
 	void start();
 	virtual ~CLI();
