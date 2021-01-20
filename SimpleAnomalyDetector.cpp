@@ -64,7 +64,7 @@ void SimpleAnomalyDetector::learnNormal(const TimeSeries &ts) {
                 tmpCf.x = circle.center.x;
                 tmpCf.y = circle.center.y;
                 tmpCf.r = circle.radius;
-                tmpMax = 0;
+                tmpMax = circle.radius;
                 for (int i = 0; i < size; i++) {
                     float tmpDev = distance(pointsArr[i][0], circle.center);
                     if (tmpDev > tmpMax) {//getting max threshold for dev of individual points in the vector
@@ -97,7 +97,6 @@ vector<AnomalyReport> SimpleAnomalyDetector::detect(const TimeSeries &ts) {
             if (tmp > (itr->threshold * 1.1)) {
                 report.emplace_back(string(itr->feature1 + "-" + itr->feature2), i + 1);
             }
-
         }
     }
     return report;
