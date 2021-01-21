@@ -51,15 +51,6 @@ CMakeFiles/Advanced_Programming.dir/SimpleAnomalyDetector.cpp.o: ../timeseries.h
 CMakeFiles/Advanced_Programming.dir/anomaly_detection_util.cpp.o: ../anomaly_detection_util.cpp
 CMakeFiles/Advanced_Programming.dir/anomaly_detection_util.cpp.o: ../anomaly_detection_util.h
 
-CMakeFiles/Advanced_Programming.dir/commands.cpp.o: ../AnomalyDetector.h
-CMakeFiles/Advanced_Programming.dir/commands.cpp.o: ../HybridAnomalyDetector.h
-CMakeFiles/Advanced_Programming.dir/commands.cpp.o: ../SimpleAnomalyDetector.h
-CMakeFiles/Advanced_Programming.dir/commands.cpp.o: ../anomaly_detection_util.h
-CMakeFiles/Advanced_Programming.dir/commands.cpp.o: ../commands.cpp
-CMakeFiles/Advanced_Programming.dir/commands.cpp.o: ../commands.h
-CMakeFiles/Advanced_Programming.dir/commands.cpp.o: ../minCircle.h
-CMakeFiles/Advanced_Programming.dir/commands.cpp.o: ../timeseries.h
-
 CMakeFiles/Advanced_Programming.dir/minCircle.cpp.o: ../anomaly_detection_util.h
 CMakeFiles/Advanced_Programming.dir/minCircle.cpp.o: ../minCircle.cpp
 CMakeFiles/Advanced_Programming.dir/minCircle.cpp.o: ../minCircle.h

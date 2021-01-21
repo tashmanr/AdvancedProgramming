@@ -135,22 +135,9 @@ CMakeFiles/Advanced_Programming.dir/HybridAnomalyDetector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Advanced_Programming.dir/HybridAnomalyDetector.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/HybridAnomalyDetector.cpp" -o CMakeFiles/Advanced_Programming.dir/HybridAnomalyDetector.cpp.s
 
-CMakeFiles/Advanced_Programming.dir/commands.cpp.o: CMakeFiles/Advanced_Programming.dir/flags.make
-CMakeFiles/Advanced_Programming.dir/commands.cpp.o: ../commands.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/cmake-build-wsl_profile/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Advanced_Programming.dir/commands.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Advanced_Programming.dir/commands.cpp.o -c "/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/commands.cpp"
-
-CMakeFiles/Advanced_Programming.dir/commands.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Advanced_Programming.dir/commands.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/commands.cpp" > CMakeFiles/Advanced_Programming.dir/commands.cpp.i
-
-CMakeFiles/Advanced_Programming.dir/commands.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Advanced_Programming.dir/commands.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/commands.cpp" -o CMakeFiles/Advanced_Programming.dir/commands.cpp.s
-
 CMakeFiles/Advanced_Programming.dir/CLI.cpp.o: CMakeFiles/Advanced_Programming.dir/flags.make
 CMakeFiles/Advanced_Programming.dir/CLI.cpp.o: ../CLI.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/cmake-build-wsl_profile/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Advanced_Programming.dir/CLI.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/cmake-build-wsl_profile/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Advanced_Programming.dir/CLI.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Advanced_Programming.dir/CLI.cpp.o -c "/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/CLI.cpp"
 
 CMakeFiles/Advanced_Programming.dir/CLI.cpp.i: cmake_force
@@ -163,7 +150,7 @@ CMakeFiles/Advanced_Programming.dir/CLI.cpp.s: cmake_force
 
 CMakeFiles/Advanced_Programming.dir/Server.cpp.o: CMakeFiles/Advanced_Programming.dir/flags.make
 CMakeFiles/Advanced_Programming.dir/Server.cpp.o: ../Server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/cmake-build-wsl_profile/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Advanced_Programming.dir/Server.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/cmake-build-wsl_profile/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Advanced_Programming.dir/Server.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Advanced_Programming.dir/Server.cpp.o -c "/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/Server.cpp"
 
 CMakeFiles/Advanced_Programming.dir/Server.cpp.i: cmake_force
@@ -182,7 +169,6 @@ Advanced_Programming_OBJECTS = \
 "CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o" \
 "CMakeFiles/Advanced_Programming.dir/minCircle.cpp.o" \
 "CMakeFiles/Advanced_Programming.dir/HybridAnomalyDetector.cpp.o" \
-"CMakeFiles/Advanced_Programming.dir/commands.cpp.o" \
 "CMakeFiles/Advanced_Programming.dir/CLI.cpp.o" \
 "CMakeFiles/Advanced_Programming.dir/Server.cpp.o"
 
@@ -195,12 +181,11 @@ Advanced_Programming: CMakeFiles/Advanced_Programming.dir/timeseries.cpp.o
 Advanced_Programming: CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o
 Advanced_Programming: CMakeFiles/Advanced_Programming.dir/minCircle.cpp.o
 Advanced_Programming: CMakeFiles/Advanced_Programming.dir/HybridAnomalyDetector.cpp.o
-Advanced_Programming: CMakeFiles/Advanced_Programming.dir/commands.cpp.o
 Advanced_Programming: CMakeFiles/Advanced_Programming.dir/CLI.cpp.o
 Advanced_Programming: CMakeFiles/Advanced_Programming.dir/Server.cpp.o
 Advanced_Programming: CMakeFiles/Advanced_Programming.dir/build.make
 Advanced_Programming: CMakeFiles/Advanced_Programming.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/cmake-build-wsl_profile/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable Advanced_Programming"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/Users/doras/Desktop/Becca's Computer Died yay/CLionProjects/Advanced Programming/cmake-build-wsl_profile/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Advanced_Programming"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Advanced_Programming.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

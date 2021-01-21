@@ -21,7 +21,6 @@
 
 using namespace std;
 
-// edit your ClientHandler interface here:
 class ClientHandler {
 protected:
     DefaultIO *dio;
@@ -29,7 +28,6 @@ public:
     virtual void handle(int clientID) = 0;
 };
 
-// you can add helper classes here and implement on the cpp file
 class AnomalyDetectionHandler : public ClientHandler {
 public:
     virtual void handle(int clientID) {
@@ -39,12 +37,10 @@ public:
     }
 };
 
-
-// implement on Server.cpp
 class Server {
     thread *t; // the thread to run the start() method in
-    int fd; //file descripter
-    int clientLimit = 1;
+    int fd; //file descriptor
+    int clientLimit = 2;
     int clientSocket;
     bool stopFlag;
     sockaddr_in server;

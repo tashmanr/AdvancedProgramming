@@ -6,7 +6,7 @@
 #include "Server.h"
 
 Server::Server(int port) throw(const char *) {
-    stopFlag = false;
+    stopFlag = false; //initialize stopFlag
     //making a new TCP socket
     fd = socket(AF_INET, SOCK_STREAM, 0);
     if (fd < 0)
@@ -22,11 +22,11 @@ Server::Server(int port) throw(const char *) {
     }
 }
 
+//function that lets clients connect to the server
 void Server::start(ClientHandler &ch) throw(const char *) {
     alarm(1);
     t = new thread([&ch, this]() {
-        //socklen_t clientSize = sizeof(client);
-        while (!stopFlag) {
+        while (!stopFlag) {//loops until stop function is called
             socklen_t clientSize = sizeof(client);
             alarm(1);
             clientSocket = accept(fd, (struct sockaddr *) &client, &clientSize);
@@ -41,6 +41,7 @@ void Server::start(ClientHandler &ch) throw(const char *) {
     });
 }
 
+//function to stop the run
 void Server::stop() {
     stopFlag = true;
     t->join(); // do not delete this!

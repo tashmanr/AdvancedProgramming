@@ -285,33 +285,6 @@ anomaly_detection_util.cpp.s:
 	$(MAKE) -f CMakeFiles/Advanced_Programming.dir/build.make CMakeFiles/Advanced_Programming.dir/anomaly_detection_util.cpp.s
 .PHONY : anomaly_detection_util.cpp.s
 
-commands.o: commands.cpp.o
-
-.PHONY : commands.o
-
-# target to build an object file
-commands.cpp.o:
-	$(MAKE) -f CMakeFiles/Advanced_Programming.dir/build.make CMakeFiles/Advanced_Programming.dir/commands.cpp.o
-.PHONY : commands.cpp.o
-
-commands.i: commands.cpp.i
-
-.PHONY : commands.i
-
-# target to preprocess a source file
-commands.cpp.i:
-	$(MAKE) -f CMakeFiles/Advanced_Programming.dir/build.make CMakeFiles/Advanced_Programming.dir/commands.cpp.i
-.PHONY : commands.cpp.i
-
-commands.s: commands.cpp.s
-
-.PHONY : commands.s
-
-# target to generate assembly for a file
-commands.cpp.s:
-	$(MAKE) -f CMakeFiles/Advanced_Programming.dir/build.make CMakeFiles/Advanced_Programming.dir/commands.cpp.s
-.PHONY : commands.cpp.s
-
 minCircle.o: minCircle.cpp.o
 
 .PHONY : minCircle.o
@@ -393,9 +366,6 @@ help:
 	@echo "... anomaly_detection_util.o"
 	@echo "... anomaly_detection_util.i"
 	@echo "... anomaly_detection_util.s"
-	@echo "... commands.o"
-	@echo "... commands.i"
-	@echo "... commands.s"
 	@echo "... minCircle.o"
 	@echo "... minCircle.i"
 	@echo "... minCircle.s"

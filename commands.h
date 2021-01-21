@@ -92,6 +92,7 @@ public:
         send(clientID, buffer, strlen(buffer), 0);
     }
 
+    //function that converts floats to string and then sends to write(string)
     virtual void write(float f) {
         string s = to_string(f);
         write(s);
@@ -275,13 +276,6 @@ public:
                 s = ss2.str();
             }
             return s;
-
-
-            if (s[s.length() - 1] != '0') {
-                return s;
-            } else { //else trim the last 0
-                return TrimFloatToString(f, n-1);
-            }
         }
     }
 
@@ -302,7 +296,6 @@ public:
                         TP++;
                     }
                     data->anomalyWindows[2][i]++;
-                    //TP++;
                     flag = true;
                     break;
                 }
@@ -322,11 +315,8 @@ public:
         float positiveT, positiveF;
         positiveT = TP / numWindows;
         positiveF = FP / N;
-        dio->write("True Positive Rate: " + TrimFloatToString(positiveT, 3) + "\n"); //Todo: Add back in!
-        //dio->write(floorf(positiveT * 1000.0) / 1000.0);//round to 3 points after decimal
+        dio->write("True Positive Rate: " + TrimFloatToString(positiveT, 3) + "\n");
         dio->write("False Positive Rate: " + TrimFloatToString(positiveF,3) + "\n");
-        //dio->write(floorf(positiveF * 1000.0) / 1000.0);//round to 3 points after decimal
-        //dio->write("\n");
     }
 
     void execute(Info *data) override {

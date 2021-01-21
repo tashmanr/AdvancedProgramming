@@ -7,7 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Advanced_Programming.dir/Server.cpp.o"
   "CMakeFiles/Advanced_Programming.dir/SimpleAnomalyDetector.cpp.o"
   "CMakeFiles/Advanced_Programming.dir/anomaly_detection_util.cpp.o"
-  "CMakeFiles/Advanced_Programming.dir/commands.cpp.o"
   "CMakeFiles/Advanced_Programming.dir/minCircle.cpp.o"
   "CMakeFiles/Advanced_Programming.dir/timeseries.cpp.o"
 )
