@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Advanced_Programming.dir/CLI.cpp.o"
   "CMakeFiles/Advanced_Programming.dir/HybridAnomalyDetector.cpp.o"
   "CMakeFiles/Advanced_Programming.dir/MainTrain.cpp.o"
+  "CMakeFiles/Advanced_Programming.dir/Server.cpp.o"
   "CMakeFiles/Advanced_Programming.dir/SimpleAnomalyDetector.cpp.o"
   "CMakeFiles/Advanced_Programming.dir/anomaly_detection_util.cpp.o"
   "CMakeFiles/Advanced_Programming.dir/commands.cpp.o"

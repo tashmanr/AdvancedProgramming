@@ -259,21 +259,28 @@ public:
         data->anomalyWindows.push_back(reports);
     }
 
-    string Trim3FloatToString(float f) {
+    // Helper function to make the float a string, trimmed to the right precision
+    string TrimFloatToString(float f, int n) {
         if (f == 0) {
             return "0";
         } else {
             stringstream ss;
-            ss << std::fixed << setprecision(3) << f;
+            ss << std::fixed << setprecision(n) << f;
             string s = ss.str();
+            //if the last number is not 0, return the string
+            while (s[s.length() - 1] == '0'){
+                n--;
+                stringstream ss2;
+                ss2 << std::fixed << setprecision(n) << f;
+                s = ss2.str();
+            }
+            return s;
+
+
             if (s[s.length() - 1] != '0') {
                 return s;
-            } else if (s[s.length() - 2] != '0') {
-                string s2 = to_string(s[0]) + to_string(s[1]) + to_string(s[2]) + to_string(s[3]);
-                return s2;
-            } else {
-                string s2 = to_string(s[0]) + to_string(s[1]) + to_string(s[2]);
-                return s2;
+            } else { //else trim the last 0
+                return TrimFloatToString(f, n-1);
             }
         }
     }
@@ -315,9 +322,9 @@ public:
         float positiveT, positiveF;
         positiveT = TP / numWindows;
         positiveF = FP / N;
-        dio->write("True Positive Rate: " + Trim3FloatToString(positiveT) + "\n");
+        dio->write("True Positive Rate: " + TrimFloatToString(positiveT, 3) + "\n"); //Todo: Add back in!
         //dio->write(floorf(positiveT * 1000.0) / 1000.0);//round to 3 points after decimal
-        dio->write("False Positive Rate: " + Trim3FloatToString(positiveF) + "\n");
+        dio->write("False Positive Rate: " + TrimFloatToString(positiveF,3) + "\n");
         //dio->write(floorf(positiveF * 1000.0) / 1000.0);//round to 3 points after decimal
         //dio->write("\n");
     }
